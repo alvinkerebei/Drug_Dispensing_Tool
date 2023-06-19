@@ -10,7 +10,7 @@ if(mysqli_num_rows($result)>0){
     if($password == $row["password"]){
         $_SESSION["login"]=true;
         $_SESSION["id"] = $row["id"];
-        header("Location: addpatients.php");
+        header("Location: homepage.php");
     }else{
         echo "<script> alert('Incorrect Password');</script>";
     }
