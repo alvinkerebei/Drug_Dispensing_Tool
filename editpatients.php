@@ -2,6 +2,7 @@
 
 require_once 'dbconnection.php';
 
+$Patient_SSN="";
 $Patient_Name="";
 $Patient_Address="";
 $Patient_Age="";
@@ -10,8 +11,30 @@ $Doctor_SSN="";
 $errorMessage="";
 $successMessage="";
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
+if($_SERVER['REQUEST_METHOD']=='GET'){
+    if(!isset($_GET["id"])){
+        header("location:/Drug_Dispensing_Tool/patientpage.php");
+        exit;
+    }
 
+    $Patient_SSN=$_GET["id"];
+
+    $sql = "SELECT * FROM patients WHERE Patient_SSN = '$Patient_SSN'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    if(!$row){
+        header("location: /Drug_Dispensing_Tool/patientpage.php");
+        exit;
+    }
+
+    $Patient_Name = $row["Patient_Name"];
+    $Patient_Address = $row["Patient_Address"];
+    $Patient_Age = $row["Patient_Age"];
+    $Doctor_SSN = $row["Doctor_SSN"];
+}else{
+
+    
     $Patient_Name = $_POST["name"];
     $Patient_Address = $_POST["address"];
     $Patient_Age = $_POST["age"];
@@ -22,29 +45,25 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $errorMessage = "A Field is Empty!";
             break;
         }
-        //add patient to db
-        $sql ="INSERT INTO `patients`(`Patient_Name`, `Patient_Address`, `Patient_Age`, `Doctor_SSN`) 
-        VALUES ('$Patient_Name','$Patient_Address','$Patient_Age','$Doctor_SSN')";
-        $result= $conn->query($sql);
 
-        if (!$result){
-            $errorMessage = "Invalid". $conn->error;
+       $sql=" UPDATE 'patients' SET 'Patient_Name'='$Patient_Name','Patient_Address'='$Patient_Address','Patient_Age'='$Patient_Age','Doctor_SSN'='$Doctor_SSN'
+                WHERE 'Patient_SSN'='$Patient_SSN'";
+
+        $result = $conn->query($sql);
+
+        if(!$result){
+            $errorMessage="Invalid". $conn->$error;
             break;
         }
-        $Patient_Name="";
-        $Patient_Address="";
-        $Patient_Age="";
-        $Doctor_SSN="";
 
-        $successMessage ="Patient is Successfully Added";
+        $successMessage = "Record Updated Successfully";
 
-        header("location:/Drug_Dispensing_Tool/patientpage.php");
+        header("location: /Drug_Dispensing_Tool/patientpage.php");
         exit;
 
     }while(false);
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +90,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         ?> 
 
         <form action="addpatients.php" method="POST">     
-
+        <input type="hidden" name="Patient_SSN" value="<?php echo $Patient_SSN ?>">
         <div class="row mb-3">
             <label class ="col-sm-3 col-form-label">Name</label>
             <div class="col-sm-6">
@@ -117,10 +136,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         
         <div class="row mb-3">
             <div class="offset-sm-3 col-sm-3 d-grid">
-                <button type="submit" class="btn btn-primary" >Submit</button>
+                <button type="submit" class="btn btn-primary" >Edit</button>
             </div>
             <div class="col-sm-3 d-grid">
-                <a class="btn btn-outline-primary" href="/Drud_Dispensing_Tool/patientpage.php" role="button">Cancel</a>
+                <a class="btn btn-outline-primary" href="/Drug_Dispensing_Tool/patientpage.php" role="button">Cancel</a>
             </div>
         </div>
         </form>

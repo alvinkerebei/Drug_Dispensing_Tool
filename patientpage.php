@@ -43,8 +43,8 @@
                 <td>$row[Patient_Age]</td>
                 <td>$row[Doctor_SSN]</td>
                 <td>
-                <a class = 'btn btn-primary btn-sm' href = '/Drug_Dispensing_Tool/addpatients.php?id=$row[Patient_SSN]'>Edit</a> 
-                <a class = 'btn btn-primary btn-sm' href = '/Drug_Dispensing_Tool/addpatients.php?id=$row[Patient_SSN]'>Delete</a> 
+                <a class = 'btn btn-primary btn-sm' href = '/Drug_Dispensing_Tool/editpatients.php?id=$row[Patient_SSN]'>Edit</a> 
+                <a class = 'btn btn-primary btn-sm' href = '/Drug_Dispensing_Tool/deletepatients.php?id=$row[Patient_SSN]'>Delete</a> 
                 </td>
             </tr>
                 ";
