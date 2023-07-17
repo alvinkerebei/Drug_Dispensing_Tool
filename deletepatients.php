@@ -9,7 +9,9 @@ if(isset($_GET["id"])){
     $conn->query($sql);
 
 }
-
+//make the files have a recycle bin
+//show user at top right and logout button
+//
 header("location: /Drug_Dispensing_Tool/patientpage.php");
 exit;
 ?>
