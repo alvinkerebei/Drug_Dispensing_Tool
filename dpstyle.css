@@ -44,7 +44,7 @@ nav ul li a{
     font-size: 15px;
     margin:10px 0 0px;
 }
-.symp-btn{
+.search-btn{
     display:inline-block;
     text-decoration:none;
     color:black;
@@ -55,47 +55,7 @@ nav ul li a{
     position:relative;
     cursor:pointer;
 }
-.symp-btn:hover{
-    border:solid black;
-    background:rgb(110, 114, 110);
-    transition:1s;
-}
-.prescription-txtbox p{
-    font-size: 15px;
-    margin:10px 0 0px;
-}
-.pres-btn{
-    display:inline-block;
-    text-decoration:none;
-    color:black;
-    border:solid black;
-    padding:9px;
-    font-size:10px;
-    background:inherit;
-    position:relative;
-    cursor:pointer;
-}
-.pres-btn:hover{
-    border:solid black;
-    background:rgb(110, 114, 110);
-    transition:1s;
-}
-.drug-admin p{
-    font-size: 15px;
-    margin:10px 0 0px;
-}
-.drugadmin-btn{
-    display:inline-block;
-    text-decoration:none;
-    color:black;
-    border:solid black;
-    padding:9px;
-    font-size:10px;
-    background:inherit;
-    position:relative;
-    cursor:pointer;
-}
-.drugadmin-btn:hover{
+.search-btn:hover{
     border:solid black;
     background:rgb(110, 114, 110);
     transition:1s;
