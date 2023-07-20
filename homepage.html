@@ -1,42 +1,7 @@
-<?php
-session_start(); // Start the session
-
-require "dbconnection.php";
-
-if (isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    // Sanitize and validate user input (to prevent SQL injection)
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
-   
-
-    $query = "SELECT * FROM `patients` WHERE username = '$username'";
-    $result = mysqli_query($conn, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-
-        if ($password == $row["password"]) {
-            $_SESSION["login"] = true;
-            $_SESSION["username"] = $row["username"];
-            header("Location: patientpage.php");
-            }
-        } else {
-          echo "Invalid username, email, or password";
-        }
-    } else {
-        echo "Invalid username, email, or password";
-    }
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Patient Login</title>
+    <title>Heisenberg Drug Distribution System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -118,23 +83,30 @@ if (isset($_POST["login"])) {
 </head>
 <body>
     <div class="container">
-        <h1>PATIENT</h1>
+        <h1>Drug Distribution System</h1>
 
         <div class="login-form">
             <h2>Login</h2>
-            <form class="" action="" method="POST">
+            <form>
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username" required>
+                <input type="text" id="username" required>
 
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" id="password" required>
 
-                <button type="submit" name="login">Login</button>
+                <button type="submit">Login</button>
             </form>
+        </div>
+
+        <div class="login-option">
+            <a href="doctorlogin.php">Doctor Login</a> |
+            <a href="pharmacistlogin.php">Pharmacist Login</a> |
+            <a href="patientlogin.php">Patient Login</a> |
+            <a href="adminlogin.php">Admin Login</a>
         </div>
     </div>
     <label>
-        <p> No account?<a href="registerpatient.php">Signup</a></p>
+        <p> No account?<a href="signup.html.html">Signup</a></p>
     </label>
 </body>
 </html>

@@ -1,60 +1,148 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
+include("dbconnection.php");
+
+
+if (isset($_GET['Trade_Name'])) {
+    $_SESSION['Trade_Name'] = $_GET['Trade_Name'];
+    $sql = "SELECT * FROM drugs WHERE Trade_Name = '".$_SESSION['Trade_Name']."'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $Trade_Name = $row['Trade_Name'];
+    if ($row) {      
+        $Drug_Name = $row['Drug_Name'];
+        $Quantity = $row['Quantity'];  
+        $Form_of_Administration = $row['Form_of_Administration'];
+        $Price = $row['Price'];
+    }
+    else{
+        echo "Error fetching assoc array";
+    }
+
+}
+else{
+    echo "Error fetching Drug ID";
+}
+?>
+
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
-    <meta name = "viewport" contnt ="width=device-width, initial-scale=1.0">
-    <title>UPDATE DRUGS</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        
-    </head>
-    <body>
-        <h2>UPDATE DRUG</h2>
-        <form class="" action="" method="POST">
-            <input type="hidden" name="id" id="id">
+<head>
+    <title>Edit Drugs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your custom styles here */
+        /* The styles from your previous CSS file can be included here */
+        h2 {
+            text-align: center;
+            margin-top: 70px;
+            color: #162938;
+        }
 
-            <label for="newname">Drug Name : </label>
-            <input type = "text" name="newname" id="newname" required><br><br>
+        form {
+            width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgb(255, 253, 253, 0.2);
+            border: 2px solid rgba(255,255,255,.5);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            padding: 30px;
+        }
 
-            <label for="newquantity">Quantity(in mg) : </label>
-            <input type = "number" name="newquantity" id="newquantity" required><br><br>
+        label {
+            font-size: 1em;
+            color: #162938;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
 
+        input {
+            width: 100%;
+            height: 35px;
+            border: 2px solid #162938;
+            border-radius: 6px;
+            outline: none;
+            font-size: 1em;
+            color: #162938;
+            font-weight: 600;
+            padding: 0 5px;
+            margin-bottom: 15px;
+        }
 
-            <label for="newfoa">Form of Administration : </label>
-            <input type = "text" name="newfoa" id="newfoa" required><br><br>
+        input[type="submit"] {
+            background-color: #162938;
+            color: white;
+            cursor: pointer;
+        }
 
-            <label for="newprice">Price : </label>
-            <input type = "number" name="newprice" id="newprice" required><br><br>
+        input[type="submit"]:hover {
+            background-color: #131a21;
+        }
 
-            <button type= "submit" name="submit">Register</button>
-        </form><br>
-    </body>
+        h2 {
+            text-align: center;
+            margin-top: 70px;
+            color: #162938;
+        }
+
+        .success-message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Edit Drugs</h2>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <input type="hidden" name="Trade_Name" >
+        <label for="Drug_Name">Drug Name:</label>
+        <input type="text" name="Drug_Name" value="<?php echo $Drug_Name?>">
+        <br><br>
+
+        <label for="Quantity">Quantity(in mg):</label>
+        <input type="text" name="Quantity" value="<?php echo $Quantity?>">
+        <br><br>
+
+        <label for="Form_of_Administration">Form of Administration:</label>
+        <input type="text" name="Form_of_Administration" value="<?php echo $Form_of_Administration?>">
+        <br><br>
+
+        <label for="Price">Price:</label>
+        <input type="number" name="Price" value="<?php echo $Price?>">
+        <br><br>
+
+        <input type="submit" name="submit" value="Update Details">
+    </form>
+</body>
 </html>
 
 <?php
-
-require "dbconnection.php";
-
-if(isset($_POST["submit"])){
-    $Trade_Name = $_POST["id"];
-    $newDrug_Name = $_POST["newname"];
-    $newQuantity = $_POST["newquantity"];
-    $newForm_of_Administration = $_POST["newfoa"];
-    $newPrice = $_POST["newprice"];
+if(isset($_POST['submit'])){
+    $newDrug_Name = $_POST['Drug_Name'];
+    $newQuantity = $_POST['Quantity'];
+    $newForm_of_Administration = $_POST['Form_of_Administration'];
+    $newPrice = $_POST['Price'];
+    $updateQuery = "UPDATE drugs SET Drug_Name = '".$newDrug_Name."', Quantity = '".$newQuantity."',Form_of_Administration = '".$newForm_of_Administration."',Price = '".$newPrice."' WHERE Trade_Name = '".$_SESSION['Trade_Name']."'";
+    try {
+        mysqli_query($conn, $updateQuery);
+        $_SESSION['update_success_message'] = "Drug ".$_SESSION['Drug_Name']."'s details have been updated successfully!";
+        unset($_SESSION['Trade_Name']);
+        header("Location: viewdrugs.php");
+        exit();
+    } catch (Exception $e) {
+        $_SESSION['update_error_message'] = "Failed to update drug: " . $e->getMessage();
+        unset($_SESSION['Trade_Name']);
+        header("Location: viewdrugs.php");
+        exit();
+    }
 }
-   
- $query = "UPDATE `drugs` SET `Drug_Name`='$newDrug_Name',`Quantity`='$newQuantity',`Form_of_Administration`='$newForm_of_Administration',`Price`='$newPrice'
-            WHERE `Trade_Name`='$Trade_Name'";
- 
- mysqli_query($conn,$query);
- 
- if(!mysqli_query($conn,$query)){
-    echo"<script>alert('Failed')</script>";
- }else{
-    echo"<script>alert('Drug is Updated')</script>";
- }
-    
-
-
 ?>
