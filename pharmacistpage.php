@@ -15,10 +15,13 @@ $row=$result->fetch_assoc();
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            background-image: url(background4.jpg);
+            background-position: center;
+            background-size: cover;
         }
 
         .navbar {
-            background-color: #333;
+            background-color: darkgreen;
             color: #fff;
             padding: 10px;
             display: flex;
@@ -40,10 +43,19 @@ $row=$result->fetch_assoc();
             flex-direction: column; /* Align buttons vertically */
             align-items: center;
         }
-
+        .text-box{
+            margin: 50px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* Align buttons vertically */
+            align-items: center;
+        }
+.text-box p{
+    color: white;
+}
         .button {
             padding: 10px 20px;
-            background-color:#333;
+            background-color:black;
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -54,10 +66,17 @@ $row=$result->fetch_assoc();
             .button:hover {
                 background-color: #45a049;
             }
+            .logo{
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 100px;
+            height:auto;
+        }
         </style>
     </head>
 <body>
-    <!-- Navigation bar -->
+<img src="heisenberglogo.png" class="logo">
     <div class="navbar">
         <h3></h3>
         <a href="pharmacistlogin.php">LOGOUT</a>

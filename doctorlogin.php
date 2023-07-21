@@ -99,6 +99,7 @@
         </div>
     </div>
     <label>
+    <a href ="homepage.html">HOME</a><br><br>
         <p> No account?<a href="registerdoctor.php">Signup</a></p>
     </label>
 </body>
@@ -133,7 +134,7 @@ if (isset($_POST["login"])) {
           echo "Invalid username, email, or password";
         }
     } else {
-        echo "Invalid username, email, or password";
+        echo "";
     }
 
 ?>

@@ -134,6 +134,7 @@ if (isset($_POST["login"])) {
         </div>
     </div>
     <label>
+        <a href ="homepage.html">HOME</a><br><br>
         <p> No account?<a href="registerpatient.php">Signup</a></p>
     </label>
 </body>

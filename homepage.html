@@ -1,112 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Heisenberg Drug Distribution System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .login-form {
-            margin-bottom: 20px;
-        }
-
-        .login-form h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 10px;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button[type="submit"] {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .login-option {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .login-option a {
-            margin: 0 5px;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        label a {
-            color: #4CAF50;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="indexstyle.css">
+        <title>Heisenberg Drug Distribution System</title>
+    </head>
+    
 <body>
-    <div class="container">
-        <h1>Drug Distribution System</h1>
-
-        <div class="login-form">
-            <h2>Login</h2>
-            <form>
-                <label for="username">Username:</label>
-                <input type="text" id="username" required>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
-
-                <button type="submit">Login</button>
-            </form>
-        </div>
-
-        <div class="login-option">
-            <a href="doctorlogin.php">Doctor Login</a> |
-            <a href="pharmacistlogin.php">Pharmacist Login</a> |
-            <a href="patientlogin.php">Patient Login</a> |
-            <a href="adminlogin.php">Admin Login</a>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Welcome to Heisenberg Drug System</p>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="homepage.html" class="link active">Home</a></li>
+                    <li><a href="aboutus.html" class="link">About Us</a></li>
+                    <li><a href="service.html" class="link">Services</a></li>
+                    <li><a href="contact.html" class="link">Contact</a></li>
+                </ul>
+                <div class="nav-button">
+                    <button class="btn white-btn" id="loginBtn">Sign In</button>
+                    <button class="btn" id="signupBtn">Sign Up</button>
+                </div>
+            </div>
+        </nav>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu"></i>
         </div>
     </div>
-    <label>
-        <p> No account?<a href="signup.html.html">Signup</a></p>
-    </label>
+    <script>
+        document.getElementById("loginBtn").onclick = function () {
+            // Replace 'heisenbergloginpage.html' with the URL of your login page.
+            window.location.href = 'loginpage.html';
+        };
+
+        document.getElementById("signupBtn").onclick = function () {
+            // Replace 'heisenbergsignuppage.html' with the URL of your sign-up page.
+            window.location.href = 'signuppage.html';
+        };
+    </script>
 </body>
 </html>

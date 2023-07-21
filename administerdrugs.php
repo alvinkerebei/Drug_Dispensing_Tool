@@ -41,7 +41,7 @@ if(isset($_POST["submit"])){
     $Dosage = $_POST["dosage"];
     $Quantity = $_POST["quantity"];
     $Price =$_POST["price"];
-}
+
    
  $query = "INSERT INTO `drugsadministered` (`Drug_Name`,`Dosage`,`Quantity`,`Price`) 
             VALUES ('$Drug_Name','$Dosage','$Quantity','$Price')";
@@ -53,7 +53,7 @@ if(isset($_POST["submit"])){
  }else{
     echo"<script>alert('Drug is Administered')</script>";
  }
-    
+} 
 
 
 ?>

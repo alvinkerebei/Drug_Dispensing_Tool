@@ -42,7 +42,7 @@ if(isset($_POST["submit"])){
     $Quantity = $_POST["quantity"];
     $Date =$_POST["date"];
     $Patient_SSN = $_POST["id"];
-}
+
    
  $query = "INSERT INTO `prescription` (`Drug_Name`,`Dosage`,`Quantity`,`Date`) 
             VALUES ('$Drug_Name','$Dosage','$Quantity','$Date')";
@@ -54,7 +54,7 @@ if(isset($_POST["submit"])){
  }else{
     echo"<script>alert('Symptom is Added<br>Await for diagnosis')</script>";
  }
-    
+} 
 
 
 ?>

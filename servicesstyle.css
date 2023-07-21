@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,200&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: url("finalimage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 1200px;
+  /* Add a maximum width to the wrapper */
+  margin: auto;
+  /* Center the wrapper horizontally */
+  padding-top: 130px;
+  /* Add space at the top for the navigation */
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: linear-gradient(rgba(39, 39, 39, 0.6), transparent);
+  z-index: 100;
+}
+
+.nav-logo p {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.nav-menu ul {
+  display: flex;
+}
+
+.nav-menu ul li {
+  list-style-type: none;
+}
+
+.nav-menu ul li .link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+  padding-bottom: 15px;
+  margin: 0 25px;
+}
+
+.link:hover,
+.active {
+  border-bottom: 2px solid #fff;
+}
+
+.nav-menu-btn {
+  display: none;
+}
+
+.container {
+  text-align: center;
+  /* Center content within the container */
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Add a background color for the container */
+  padding: 30px;
+  border-radius: 10px;
+  /* Adjust as needed */
+  margin-top: 50px;
+  /* Add top margin to separate from navigation */
+}
+
+.container p {
+  margin-top: 10px;
+}
+
+.container p a {
+  color: blue;
+  text-decoration: none;
+}
+
+.container p a:hover {
+  text-decoration: underline;
+}
+
+/* Add space between the input fields */
+.container label,
+.container input,
+.container select {
+  margin-bottom: 10px;
+}
+
+/* Services Page Specific Styles */
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+section {
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+ul {
+  text-align: left;
+  margin-left: 30px;
+}
+
+li {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+footer p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    margin: 5px;
+  }
+}
+body {
+    flex-direction: column;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(39, 39, 39, 0.6);
+    z-index: 100;
+  }
+  
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-menu ul {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-menu ul li {
+    list-style-type: none;
+  }
+  
+  .nav-menu ul li .link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 15px;
+    transition: 0.3s;
+  }
+  
+  .link:hover,
+  .active {
+    border-bottom: 2px solid #fff;
+  }
+  
+  .wrapper {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    text-align: left;
+    margin-left: 30px;
+  }
+  
+  li {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  }

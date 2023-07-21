@@ -15,10 +15,13 @@ $row=$result->fetch_assoc();
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            background-image: url(background4.jpg);
+            background-position: center;
+            background-size: cover;
         }
 
         .navbar {
-            background-color: #333;
+            background-color:darkgreen;
             color: #fff;
             padding: 10px;
             display: flex;
@@ -43,7 +46,7 @@ $row=$result->fetch_assoc();
 
         .button {
             padding: 10px 20px;
-            background-color:#333;
+            background-color:black;
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -54,9 +57,17 @@ $row=$result->fetch_assoc();
         .button:hover {
             background-color: #45a049;
         }
+        .logo{
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 100px;
+            height:auto;
+        }
     </style>
 </head>
 <body>
+    <img src="heisenberglogo.png" class="logo">
     <!-- Navigation bar -->
     <div class="navbar">
         <h3></h3>
@@ -77,7 +88,7 @@ $row=$result->fetch_assoc();
         </div>
         <div class="button-container">
             <h1>View Drugs</h1>
-            <a href="viewpharmacists.php" class="button">View</a>
+            <a href="viewdrugs.php" class="button">View</a>
         </div>
     </body>
 </html>

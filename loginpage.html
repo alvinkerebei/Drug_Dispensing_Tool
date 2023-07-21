@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginstyle.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Welcome to Heisenberg Drug System</p>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="homepage.html" class="link">Home</a></li>
+                    <li><a href="service.html" class="link">Services</a></li>
+                    <li><a href="contact.html" class="link">Contact</a></li>
+                    <li><a href="aboutus.html" class="link">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h1>Heisenberg Login Page</h1>
+            <p>Log in to your account as:</p>
+            
+            <form id="loginForm">
+                <a href="adminlogin.php"><button class="button">Admin</button></a><br>
+                <a href="patientlogin.php" ><button class="button">Patient</button></a><br>
+                <a href="doctorlogin.php"><button class="button">Doctor</button></a><br>
+                <a href="pharmacistlogin.php"><button class="button"> Pharmacist</button></a><br>
+            </form>
+            
+            <p>Don't have an account? <a href="signuppage.html">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").onsubmit = function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form input values
+            const userId = document.getElementById("userId").value;
+            const password = document.getElementById("password").value;
+            const userType = document.getElementById("userType").value;
+
+            // Perform login authentication or any other necessary processing here
+            // For simplicity, this example doesn't handle actual login validation
+
+            // You can display the form values for testing purposes
+            console.log("User ID:", userId);
+            console.log("Password:", password);
+            console.log("User Type:", userType);
+
+            // Redirect to a success page or perform any other actions after login
+            // window.location.href = 'success.html';
+        };
+    </script>
+</body>
+</html>

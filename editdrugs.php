@@ -5,15 +5,16 @@ session_start();
 include("dbconnection.php");
 
 
-if (isset($_GET['Trade_Name'])) {
-    $_SESSION['Trade_Name'] = $_GET['Trade_Name'];
-    $sql = "SELECT * FROM drugs WHERE Trade_Name = '".$_SESSION['Trade_Name']."'";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM drugs WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    $Trade_Name = $row['Trade_Name'];
-    if ($row) {      
+
+    // Check if the record with the given ID exists
+    if ($row) {
         $Drug_Name = $row['Drug_Name'];
-        $Quantity = $row['Quantity'];  
+        $Quantity = $row['Quantity'];
         $Form_of_Administration = $row['Form_of_Administration'];
         $Price = $row['Price'];
     }
@@ -24,6 +25,25 @@ if (isset($_GET['Trade_Name'])) {
 }
 else{
     echo "Error fetching Drug ID";
+}
+if(isset($_POST['submit'])){
+    $newDrug_Name = $_POST['drug_Name'];
+    $newQuantity = $_POST['quantity'];
+    $newForm_of_Administration = $_POST['form_of_Administration'];
+    $newPrice = $_POST['price'];
+    $updateQuery = "UPDATE `drugs` SET `Drug_Name` = '$newDrug_Name', `Quantity` = '$newQuantity',`Form_of_Administration` = '$newForm_of_Administration',`Price` = '$newPrice' WHERE `id` = '".$_SESSION['id']."'";
+    try {
+        mysqli_query($conn, $updateQuery);
+        $_SESSION['update_success_message'] = "Drug ".$_SESSION['Drug_Name']."'s details have been updated successfully!";
+        unset($_SESSION['id']);
+        header("Location: viewdrugs.php");
+        exit();
+    } catch (Exception $e) {
+        $_SESSION['update_error_message'] = "Failed to update drug: " . $e->getMessage();
+        unset($_SESSION['id']);
+        header("Location: ");
+        exit();
+    }
 }
 ?>
 
@@ -102,22 +122,22 @@ else{
 </head>
 <body>
     <h2>Edit Drugs</h2>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <input type="hidden" name="Trade_Name" >
+    <form method="post" action="">
+        <input type="hidden" name="id" >
         <label for="Drug_Name">Drug Name:</label>
-        <input type="text" name="Drug_Name" value="<?php echo $Drug_Name?>">
+        <input type="text" name="drug_Name" value="<?php echo $Drug_Name?>">
         <br><br>
 
         <label for="Quantity">Quantity(in mg):</label>
-        <input type="text" name="Quantity" value="<?php echo $Quantity?>">
+        <input type="text" name="quantity" value="<?php echo $Quantity?>">
         <br><br>
 
         <label for="Form_of_Administration">Form of Administration:</label>
-        <input type="text" name="Form_of_Administration" value="<?php echo $Form_of_Administration?>">
+        <input type="text" name="form_of_Administration" value="<?php echo $Form_of_Administration?>">
         <br><br>
 
         <label for="Price">Price:</label>
-        <input type="number" name="Price" value="<?php echo $Price?>">
+        <input type="number" name="price" value="<?php echo $Price?>">
         <br><br>
 
         <input type="submit" name="submit" value="Update Details">
@@ -125,24 +145,3 @@ else{
 </body>
 </html>
 
-<?php
-if(isset($_POST['submit'])){
-    $newDrug_Name = $_POST['Drug_Name'];
-    $newQuantity = $_POST['Quantity'];
-    $newForm_of_Administration = $_POST['Form_of_Administration'];
-    $newPrice = $_POST['Price'];
-    $updateQuery = "UPDATE drugs SET Drug_Name = '".$newDrug_Name."', Quantity = '".$newQuantity."',Form_of_Administration = '".$newForm_of_Administration."',Price = '".$newPrice."' WHERE Trade_Name = '".$_SESSION['Trade_Name']."'";
-    try {
-        mysqli_query($conn, $updateQuery);
-        $_SESSION['update_success_message'] = "Drug ".$_SESSION['Drug_Name']."'s details have been updated successfully!";
-        unset($_SESSION['Trade_Name']);
-        header("Location: viewdrugs.php");
-        exit();
-    } catch (Exception $e) {
-        $_SESSION['update_error_message'] = "Failed to update drug: " . $e->getMessage();
-        unset($_SESSION['Trade_Name']);
-        header("Location: viewdrugs.php");
-        exit();
-    }
-}
-?>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signupstyle.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Welcome to Heisenberg Drug System</p>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="homepage.html" class="link active">Home</a></li>
+                    <li><a href="service.html" class="link">Services</a></li>
+                    <li><a href="contact.html" class="link">Contact</a></li>
+                    <li><a href="aboutus.html" class="link">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h1>Heisenberg Sign Up Page</h1>
+            <p>Create an account as:</p>
+            <div class="nav-button">
+                <a href="createacc.php"><button class="button">Admin</button></a><br>
+                <a href="registerdoctor.php"><button class="button">Doctor</button></a><br>
+               <a href="registerpatient.php"><button class="button">Patient</button></a><br>
+                 <a href="registerpharmacist.php"><button class="button">Pharmacist</button></a><br>
+             </div>
+            </form>
+
+            <p>Already have an account? <a href="loginpage.html">Log In</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").onsubmit = function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form input values
+            const name = document.getElementById("name").value;
+            const userId = document.getElementById("userId").value;
+            const password = document.getElementById("password").value;
+            const userType = document.getElementById("userType").value;
+
+            // Perform any additional validation or data processing here
+            // For simplicity, this example doesn't handle form submission to a server
+
+            // You can display the form values for testing purposes
+            console.log("Name:", name);
+            console.log("User ID:", userId);
+            console.log("Password:", password);
+            console.log("User Type:", userType);
+
+            // Redirect to a success page or perform any other actions after sign-up
+            // window.location.href = 'success.html';
+        };
+    </script>
+</body>
+</html>

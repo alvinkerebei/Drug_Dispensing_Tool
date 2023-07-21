@@ -31,7 +31,7 @@
 </html>
 
 <?php
-
+session_start();
 require "dbconnection.php";
 
 if(isset($_POST["submit"])){
@@ -39,7 +39,7 @@ if(isset($_POST["submit"])){
     $symptom2 = $_POST["symp2"];
     $symptom3 = $_POST["symp3"];
     $patient_name =$_POST["name"];
-}
+
    
  $query = "INSERT INTO `symptoms` (`symptom1`,`symptom2`,`symptom3`,`patient_name`) 
             VALUES ('$symptom1','$symptom2','$symptom3','$patient_name')";
@@ -51,7 +51,7 @@ if(isset($_POST["submit"])){
  }else{
     echo"<script>alert('Symptom is Added<br>Await for diagnosis')</script>";
  }
-    
+} 
 
 
 ?>

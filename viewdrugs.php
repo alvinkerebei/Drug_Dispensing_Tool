@@ -28,7 +28,7 @@
             // Retrieve the data from the database
             $sql = "SELECT * FROM drugs";
             $result = $conn->query($sql);
-
+    
             if(!$result){
                 die("Error: ".$conn->error);
             }
@@ -36,13 +36,13 @@
             while($row = $result->fetch_assoc()){
                 echo"
                 <tr>
-                <td>$row[Trade_Name]</td>
+                <td>$row[id]</td>
                 <td>$row[Drug_Name]</td>
                 <td>$row[Quantity]</td>
                 <td>$row[Form_of_Administration]</td>
                 <td>$row[Price]</td>
                 <td>
-                <a class = 'btn btn-primary btn-sm' href = '/Drug_Dispensing_Tool/editdrugs.php?id=$row[Trade_Name]'>Edit</a> 
+                <a class = 'btn btn-primary btn-sm' href = '/Drug_Dispensing_Tool/editdrugs.php?id=$row[id]'>Edit</a> 
                 <a class = 'btn btn-primary btn-sm' href = ''>Delete</a> 
                 </td>
             </tr>

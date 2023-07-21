@@ -27,7 +27,7 @@ if (isset($_POST["login"])) {
           echo "Invalid username, email, or password";
         }
     } else {
-        echo "Invalid username, email, or password";
+        echo "";
     }
 
 ?>

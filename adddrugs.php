@@ -39,19 +39,21 @@ if(isset($_POST["submit"])){
     $Quantity = $_POST["quantity"];
     $Form_of_Administration = $_POST["foa"];
     $Price = $_POST["price"];
-}
+
+    $Drug_Name=mysqli_real_escape_string($conn,$Drug_Name);
+
    
- $query = "INSERT INTO `drugs` (`Drug_Name`,`Quantity`,`Form_of_Administration`,`Price`) 
+ $query = "INSERT INTO `drugs` (Drug_Name,`Quantity`,`Form_of_Administration`,`Price`) 
             VALUES ('$Drug_Name','$Quantity','$Form_of_Administration','$Price')";
  
  mysqli_query($conn,$query);
- 
- if(!mysqli_query($conn,$query)){
-    echo"<script>alert('Failed')</script>";
- }else{
+
+ if(mysqli_query($conn,$query)){
     echo"<script>alert('Drug is Added')</script>";
+ }else{
+    echo"<script>alert('Failed')</script>";
  }
-    
+}  
 
 
 ?>

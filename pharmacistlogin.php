@@ -21,7 +21,7 @@ if (isset($_POST["login"])) {
         if ($password == $row["password"]) {
             $_SESSION["login"] = true;
             $_SESSION["username"] = $row["username"];
-            header("Location: pharmacistpage.html");
+            header("Location: pharmacistpage.php");
             }
         } else {
           echo "Invalid username, email, or password";
@@ -133,6 +133,7 @@ if (isset($_POST["login"])) {
         </div>
     </div>
     <label>
+    <a href ="homepage.html">HOME</a><br><br>
         <p> No account?<a href="registerpharmacist.php">Signup</a></p>
     </label>
 </body>
