@@ -26,6 +26,8 @@
             <input type = "text" name="symp3" id="symp3" required><br><br>
 
             <button type= "submit" name="submit">Submit</button>
+
+           
         </form><br>
     </body>
 </html>

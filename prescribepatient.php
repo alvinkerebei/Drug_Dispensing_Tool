@@ -27,7 +27,12 @@
             <label for="date">Date : </label>
             <input type = "date" name="date" id="date" required><br><br>
 
+            <label for="patient_name">Patient's Name : </label>
+            <input type = "text" name="patient_name" id="patient_name" required><br><br>
+
             <button type= "submit" name="submit">Submit</button>
+
+            <a href="searchpatient.php">BACK</a>
         </form><br>
     </body>
 </html>
@@ -41,11 +46,11 @@ if(isset($_POST["submit"])){
     $Dosage = $_POST["dosage"];
     $Quantity = $_POST["quantity"];
     $Date =$_POST["date"];
-    $Patient_SSN = $_POST["id"];
+    $patient_name = $_POST["patient_name"];
 
    
- $query = "INSERT INTO `prescription` (`Drug_Name`,`Dosage`,`Quantity`,`Date`) 
-            VALUES ('$Drug_Name','$Dosage','$Quantity','$Date')";
+ $query = "INSERT INTO `prescription` (`Drug_Name`,`Dosage`,`Quantity`,`Date`,`patient_name`) 
+            VALUES ('$Drug_Name','$Dosage','$Quantity','$Date','$patient_name')";
  
  mysqli_query($conn,$query);
  

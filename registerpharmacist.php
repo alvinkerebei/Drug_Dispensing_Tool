@@ -10,14 +10,14 @@ if(isset($_POST["submit"])){
     $Email = $_POST["email"];
     $password = $_POST["password"];
     $confirmpass = $_POST["confirmpass"];
-    $duplicate = mysqli_query($conn,"SELECT * FROM pharmacist WHERE username ='$username'|| email='$email'");
+    $duplicate = mysqli_query($conn,"SELECT * FROM pharmacist WHERE username ='$username'|| email='$Email'");
 
     if(mysqli_num_rows($duplicate)>0){
         echo "<script> alert ('Username or Email is already in use!');</script>";
     }else{
         if($password==$confirmpass){
             $query = "INSERT INTO `pharmacist` (`Name`,`Address`,`DateofBirth`,`Email`,`username`,`password`) 
-                    VALUES ('$Name','$Address','$DateofBirth','$email','$username','$password')";
+                    VALUES ('$Name','$Address','$DateofBirth','$Email','$username','$password')";
             mysqli_query($conn,$query); 
             echo "<script> alert('Registration Successful');</script>";
         }else

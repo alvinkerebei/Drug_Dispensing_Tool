@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h4>Search Patient's Serial Number </h4>
+                        <h4>Search Patient's Name </h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -52,7 +52,7 @@
                                     if(isset($_GET['search']))
                                     {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM prescription WHERE CONCAT(Patient_SSN) LIKE '%$filtervalues%' ";
+                                        $query = "SELECT * FROM prescription WHERE CONCAT(patient_name) LIKE '%$filtervalues%' ";
                                         $query_run = mysqli_query($conn, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)

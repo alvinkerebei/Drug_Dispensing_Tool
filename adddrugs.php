@@ -50,6 +50,7 @@ if(isset($_POST["submit"])){
 
  if(mysqli_query($conn,$query)){
     echo"<script>alert('Drug is Added')</script>";
+    header("Location: viewdrugs.php");
  }else{
     echo"<script>alert('Failed')</script>";
  }

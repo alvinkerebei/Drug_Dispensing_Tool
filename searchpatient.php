@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Funda Of Web IT</title>
+    <title>Search Patient</title>
 </head>
 <body>
 
@@ -40,9 +40,9 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Symptom 1</th>
-                                    <th>Symptom 2</th>
-                                    <th>Symptom 3</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Date of Birth</th>
                                     <th>Functions</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
                                     if(isset($_GET['search']))
                                     {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM symptoms WHERE CONCAT(patient_name) LIKE '%$filtervalues%' ";
+                                        $query = "SELECT * FROM patients WHERE CONCAT(Patient_Name) LIKE '%$filtervalues%' ";
                                         $query_run = mysqli_query($conn, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
@@ -62,10 +62,10 @@
                                             {
                                                 ?>
                                                 <tr>
-                                                    <td><?= $items['patient_name']; ?></td>
-                                                    <td><?= $items['symptom1']; ?></td>
-                                                    <td><?= $items['symptom2']; ?></td>
-                                                    <td><?= $items['symptom3']; ?></td>
+                                                    <td><?= $items['Patient_Name']; ?></td>
+                                                    <td><?= $items['Patient_Address']; ?></td>
+                                                    <td><?= $items['Email']; ?></td>
+                                                    <td><?= $items['DateofBirth']; ?></td>
                                                     <td>
                                                         <a class= 'btn btn-primary btn-sm' href="prescribepatient.php">Prescribe</a>
                                                     </td>

@@ -12,7 +12,7 @@
         <h2>PRESCRIBE</h2>
         <form class="" action="" method="POST">
 
-            <input type = "hidden" name="id" id="id">
+            
 
             <label for="drugname">Drug Name : </label>
             <input type = "text" name="drugname" id="drugname" required><br><br>
@@ -27,7 +27,12 @@
             <label for="price">Price : </label>
             <input type = "number" name="price" id="price" required><br><br>
 
-            <button type= "submit" name="submit">Submit</button>
+            <label for="patient_name">Patient Name : </label>
+            <input type = "text" name="patient_name" id="patient_name" required><br><br>
+
+            <button type= "submit" name="submit">Submit</button><BR><BR>
+
+            <a href="pharmasearch.php">BACK</a>
         </form><br>
     </body>
 </html>
@@ -41,10 +46,10 @@ if(isset($_POST["submit"])){
     $Dosage = $_POST["dosage"];
     $Quantity = $_POST["quantity"];
     $Price =$_POST["price"];
-
+    $patient_name=$_POST["patient_name"];
    
- $query = "INSERT INTO `drugsadministered` (`Drug_Name`,`Dosage`,`Quantity`,`Price`) 
-            VALUES ('$Drug_Name','$Dosage','$Quantity','$Price')";
+ $query = "INSERT INTO `drugsadministered` (`Drug_Name`,`Dosage`,`Quantity`,`Price`,`patient_name`) 
+            VALUES ('$Drug_Name','$Dosage','$Quantity','$Price','$patient_name')";
  
  mysqli_query($conn,$query);
  
